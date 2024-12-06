@@ -1,1 +1,3 @@
 supabase pass: Symbolic@666
+
+access token: sbp_afe9a82b52da08cca16cfbcc72ea83e59a35e0a0
