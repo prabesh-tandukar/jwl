@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- White background -->
+  <rect width="800" height="400" fill="white"/>
+  
+  <!-- Left side delicate pattern -->
+  <path d="M150 100 A50 50 0 0 1 200 150 A50 50 0 0 1 150 200" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.4"/>
+  <path d="M140 90 A60 60 0 0 1 200 150 A60 60 0 0 1 140 210" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="120" cy="150" r="2" fill="#4169E1" opacity="0.5"/>
+  <circle cx="110" cy="180" r="1" fill="#4169E1" opacity="0.4"/>
+  <circle cx="110" cy="120" r="1" fill="#4169E1" opacity="0.4"/>
+  
+  <!-- Right side delicate pattern -->
+  <path d="M650 100 A50 50 0 0 0 600 150 A50 50 0 0 0 650 200" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.4"/>
+  <path d="M660 90 A60 60 0 0 0 600 150 A60 60 0 0 0 660 210" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="680" cy="150" r="2" fill="#4169E1" opacity="0.5"/>
+  <circle cx="690" cy="180" r="1" fill="#4169E1" opacity="0.4"/>
+  <circle cx="690" cy="120" r="1" fill="#4169E1" opacity="0.4"/>
+  
+  <!-- Top decorative elements -->
+  <path d="M300 40 Q 400 60 500 40" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <path d="M280 50 Q 400 70 520 50" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Bottom decorative elements -->
+  <path d="M300 360 Q 400 340 500 360" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <path d="M280 350 Q 400 330 520 350" fill="none" stroke="#4169E1" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Subtle corner accents -->
+  <circle cx="50" cy="50" r="1" fill="#4169E1" opacity="0.3"/>
+  <circle cx="750" cy="50" r="1" fill="#4169E1" opacity="0.3"/>
+  <circle cx="50" cy="350" r="1" fill="#4169E1" opacity="0.3"/>
+  <circle cx="750" cy="350" r="1" fill="#4169E1" opacity="0.3"/>
+</svg>

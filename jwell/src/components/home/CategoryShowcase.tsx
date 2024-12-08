@@ -5,17 +5,17 @@ import Link from "next/link";
 const categories = [
   {
     name: "Rings",
-    image: "/rings.jpg",
+    image: "/images/collection/ring.svg",
     link: "/rings",
   },
   {
     name: "Necklaces",
-    image: "/necklaces.jpg",
+    image: "/images/collection/necklace.svg",
     link: "/necklaces",
   },
   {
     name: "Earrings",
-    image: "/earrings.jpg",
+    image: "/images/collection/earrings.svg",
     link: "/earrings",
   },
 ];
@@ -42,7 +42,7 @@ export default function CategoryShowcase() {
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-serif">
+                <h3 className="text-white text-2xl font-serif ">
                   {category.name}
                 </h3>
               </div>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="50%" style="stop-color:#FFED4A"/>
+      <stop offset="100%" style="stop-color:#FFD700"/>
+    </linearGradient>
+    <filter id="sparkle">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -7"/>
+    </filter>
+  </defs>
+  
+  <path 
+    d="M30 40 Q50 70 70 40"
+    fill="none"
+    stroke="url(#goldShine)"
+    stroke-width="2"
+    stroke-linecap="round"/>
+  <circle cx="50" cy="60" r="3" fill="url(#goldShine)"/>
+  <circle cx="50" cy="60" r="1" fill="#FFFFFF" filter="url(#sparkle)"/>
+</svg>

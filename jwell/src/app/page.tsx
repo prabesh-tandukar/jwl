@@ -30,7 +30,7 @@ export default async function Home() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">
-            Featured Collection
+            Featured Jwells
           </h2>
           <FeaturedProducts products={products || []} />
         </div>

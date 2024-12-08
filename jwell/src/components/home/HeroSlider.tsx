@@ -7,19 +7,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    image: "/hero1.jpg",
-    title: "Timeless Elegance",
-    subtitle: "Discover our new collection of luxury jewelry",
+    image: "/images/hero/hero1.svg",
+    title: "Trending Now",
+    subtitle: "Jewelry that speaks to your style",
   },
   {
-    image: "/hero2.jpg",
-    title: "Handcrafted Perfection",
-    subtitle: "Each piece tells a unique story",
+    image: "/images/hero/hero2.svg",
+    title: "Instagram Ready",
+    subtitle: "Picture perfect pieces for the perfect feed",
   },
   {
-    image: "/hero3.jpg",
-    title: "Modern Classics",
-    subtitle: "Where tradition meets contemporary design",
+    image: "/images/hero/hero3.svg",
+    title: "Affordable Luxury",
+    subtitle: "Look expensive without breaking the bank",
   },
 ];
 
@@ -58,8 +58,8 @@ export default function HeroSlider() {
             priority
           />
           <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-            <h1 className="text-5xl md:text-7xl font-serif mb-4">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
+            <h1 className="text-5xl md:text-7xl font-serif mb-4 ">
               {slide.title}
             </h1>
             <p className="text-xl md:text-2xl">{slide.subtitle}</p>

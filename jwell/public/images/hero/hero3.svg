@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#FDFBF7"/>
+  
+  <!-- Left decorative pattern -->
+  <g opacity="0.2">
+    <!-- Diamond shapes left side -->
+    <path d="M50 100 L80 70 L110 100 L80 130 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    <path d="M50 200 L80 170 L110 200 L80 230 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    <path d="M50 300 L80 270 L110 300 L80 330 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    
+    <!-- Curved lines -->
+    <path d="M20 50 C 40 100, 40 150, 20 200" stroke="#B88846" fill="none" stroke-width="1"/>
+    <path d="M140 50 C 120 100, 120 150, 140 200" stroke="#B88846" fill="none" stroke-width="1"/>
+  </g>
+  
+  <!-- Right decorative pattern -->
+  <g opacity="0.2">
+    <!-- Diamond shapes right side -->
+    <path d="M690 100 L720 70 L750 100 L720 130 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    <path d="M690 200 L720 170 L750 200 L720 230 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    <path d="M690 300 L720 270 L750 300 L720 330 Z" stroke="#B88846" fill="none" stroke-width="2"/>
+    
+    <!-- Curved lines -->
+    <path d="M660 50 C 680 100, 680 150, 660 200" stroke="#B88846" fill="none" stroke-width="1"/>
+    <path d="M780 50 C 760 100, 760 150, 780 200" stroke="#B88846" fill="none" stroke-width="1"/>
+  </g>
+  
+  <!-- Center area is left empty for content -->
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- White background -->
+  <rect width="800" height="400" fill="white"/>
+  
+  <!-- Left side elements -->
+  <path d="M120 150 L140 180 L120 210 L100 180 Z" fill="#4169E1" opacity="0.7"/>
+  <path d="M80 100 L95 120 L80 140 L65 120 Z" fill="#4169E1" opacity="0.5"/>
+  <circle cx="160" cy="140" r="3" fill="#4169E1" opacity="0.6"/>
+  <circle cx="180" cy="180" r="2" fill="#4169E1" opacity="0.4"/>
+  <line x1="60" y1="200" x2="200" y2="200" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <line x1="80" y1="220" x2="180" y2="220" stroke="#4169E1" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Right side elements -->
+  <path d="M680 150 L700 180 L680 210 L660 180 Z" fill="#4169E1" opacity="0.7"/>
+  <path d="M720 100 L735 120 L720 140 L705 120 Z" fill="#4169E1" opacity="0.5"/>
+  <circle cx="640" cy="140" r="3" fill="#4169E1" opacity="0.6"/>
+  <circle cx="620" cy="180" r="2" fill="#4169E1" opacity="0.4"/>
+  <line x1="600" y1="200" x2="740" y2="200" stroke="#4169E1" stroke-width="0.5" opacity="0.3"/>
+  <line x1="620" y1="220" x2="720" y2="220" stroke="#4169E1" stroke-width="0.5" opacity="0.2"/>
+  
+  <!-- Top and bottom subtle accents -->
+  <path d="M350 50 L360 65 L350 80 L340 65 Z" fill="#4169E1" opacity="0.3"/>
+  <path d="M450 50 L460 65 L450 80 L440 65 Z" fill="#4169E1" opacity="0.3"/>
+  <path d="M350 320 L360 335 L350 350 L340 335 Z" fill="#4169E1" opacity="0.3"/>
+  <path d="M450 320 L460 335 L450 350 L440 335 Z" fill="#4169E1" opacity="0.3"/>
+</svg>
