@@ -2,13 +2,12 @@
 import { createClient } from "@supabase/supabase-js";
 import HeroSlider from "@/components/home/HeroSlider";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-// import CraftsmanshipSection from "@/components/home/CraftsmanshipSection";
-// import CategoryShowcase from "@/components/home/CategoryShowcase";
-// import CustomDesign from "@/components/home/CustomDesign";
-// import Testimonials from "@/components/home/Testimonials";
-// import InstagramFeed from "@/components/home/InstagramFeed";
-// import Footer from "@/components/layout/Footer";
+
+import CategoryShowcase from "@/components/home/CategoryShowcase";
+
+import Footer from "@/components/layout/Footer";
 import type { Database } from "@/types/supabase";
+import Navbar from "@/components/layout/Navbar";
 
 export default async function Home() {
   const supabase = createClient<Database>(
@@ -24,6 +23,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
+      <Navbar />
       <HeroSlider />
 
       {/* Featured Products */}
@@ -38,24 +38,6 @@ export default async function Home() {
 
       {/* Categories Showcase */}
       <CategoryShowcase />
-
-      {/* Craftsmanship Section */}
-      <section className="py-20 bg-neutral-50">
-        <CraftsmanshipSection />
-      </section>
-
-      {/* Custom Design Service */}
-      <CustomDesign />
-
-      {/* Testimonials */}
-      <section className="py-20 bg-neutral-50">
-        <Testimonials />
-      </section>
-
-      {/* Instagram Feed */}
-      <section className="py-20">
-        <InstagramFeed />
-      </section>
 
       <Footer />
     </main>
