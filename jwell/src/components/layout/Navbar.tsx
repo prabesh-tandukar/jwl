@@ -3,24 +3,85 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { User } from "@supabase/supabase-js";
+import { Menu, X, ShoppingBag, User as UserIcon, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const supabase = createClientComponentClient();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    // Get initial auth state
+    const initializeAuth = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        setUser(session?.user ?? null);
+      } catch (error) {
+        console.error("Error fetching auth session:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeAuth();
+
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      subscription.unsubscribe();
+    };
+  }, [supabase.auth]);
+
+  const handleSignOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      router.refresh();
+      router.push("/");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+  // Don't render anything while loading to prevent hydration mismatch
+  if (isLoading) {
+    return (
+      <nav className="fixed w-full z-50 bg-white shadow-md py-4">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-2xl font-serif">
+              JWELL
+            </Link>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-4" : "bg-transparent py-6"
+        isScrolled
+          ? "bg-white shadow-md py-4 text-gray-900"
+          : "bg-white/80 backdrop-blur-md py-6 text-gray-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -60,9 +121,27 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="hidden md:flex items-center space-x-6">
-            <Search className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
-            <User className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
-            <ShoppingBag className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
+            <Link href="/cart">
+              <ShoppingBag className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
+            </Link>
+
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <Link href="/profile">
+                  <UserIcon className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
+                </Link>
+                <button onClick={handleSignOut} className="flex items-center">
+                  <LogOut className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/signin"
+                className="text-sm hover:text-gray-600 transition-colors"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,9 +174,23 @@ export default function Navbar() {
                 Earrings
               </Link>
               <div className="flex items-center space-x-4 pt-4 border-t">
-                <Search className="w-5 h-5" />
-                <User className="w-5 h-5" />
-                <ShoppingBag className="w-5 h-5" />
+                <Link href="/cart">
+                  <ShoppingBag className="w-5 h-5" />
+                </Link>
+                {user ? (
+                  <>
+                    <Link href="/profile">
+                      <UserIcon className="w-5 h-5" />
+                    </Link>
+                    <button onClick={handleSignOut}>
+                      <LogOut className="w-5 h-5" />
+                    </button>
+                  </>
+                ) : (
+                  <Link href="/signin" className="text-sm">
+                    Sign In
+                  </Link>
+                )}
               </div>
             </div>
           </div>
