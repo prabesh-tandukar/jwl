@@ -7,6 +7,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { User } from "@supabase/supabase-js";
 import { Menu, X, ShoppingBag, User as UserIcon, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isLoading, setIsLoading] = useState(true); // Add loading state
   const supabase = createClientComponentClient();
   const router = useRouter();
+  const { itemsCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,8 +82,8 @@ export default function Navbar() {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white shadow-md py-4 text-gray-900"
-          : "bg-white/80 backdrop-blur-md py-6 text-gray-900"
+          ? "bg-white shadow-md py-4 text-blue-900"
+          : "bg-white/80 backdrop-blur-md py-6 text-blue-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -121,8 +123,13 @@ export default function Navbar() {
 
           {/* Icons */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/cart">
-              <ShoppingBag className="w-5 h-5 cursor-pointer hover:text-gray-600 transition-colors" />
+            <Link href="/cart" className="relative">
+              <ShoppingBag className="w-5 h-5 text-gray-600 hover:text-blue-900 transition-colors" />
+              {itemsCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-blue-900 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  {itemsCount}
+                </span>
+              )}
             </Link>
 
             {user ? (

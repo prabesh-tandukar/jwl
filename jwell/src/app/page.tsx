@@ -27,9 +27,9 @@ export default async function Home() {
       <HeroSlider />
 
       {/* Featured Products */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 text-blue-800">
             Featured Jwells
           </h2>
           <FeaturedProducts products={products || []} />

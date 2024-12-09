@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 import type { Product } from "@/types/database.types";
 
 interface ProductCardProps {
@@ -14,6 +15,13 @@ export default function ProductCard({
   product,
   onAddToCart,
 }: ProductCardProps) {
+  const { addItem } = useCart();
+
+  const handleAddToCart = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await addItem(product);
+  };
+
   return (
     <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <Link href={`/products/${product.id}`} className="cursor-pointer">
@@ -27,19 +35,18 @@ export default function ProductCard({
           />
         </div>
         <div className="p-4">
-          <h3 className="text-lg font-semibold">{product.name}</h3>
-          <p className="text-gray-600 text-sm mt-1 line-clamp-2">
+          <h3 className="text-lg font-semibold text-gray-900">
+            {product.name}
+          </h3>
+          <p className="text-gray-800 text-sm mt-1 line-clamp-2">
             {product.description}
           </p>
           <div className="mt-4 flex items-center justify-between">
-            <span className="text-lg font-bold">
+            <span className="text-lg font-bold text-gray-900">
               ${product.price.toFixed(2)}
             </span>
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                onAddToCart(product);
-              }}
+              onClick={handleAddToCart}
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
             >
               Add to Cart
