@@ -11,9 +11,11 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@preline/carousel": "^2.6.0",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/supabase-js": "^2.47.2",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.5.1",
     "lucide-react": "^0.468.0",
     "next": "15.0.4",
     "react": "^19.0.0",

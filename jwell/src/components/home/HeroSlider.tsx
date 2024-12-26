@@ -1,97 +1,96 @@
 // src/components/home/HeroSlider.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    image: "/images/hero/hero1.svg",
-    title: "Trending Now",
-    subtitle: "Jewelry that speaks to your style",
+    image: "/slider/slider1.jpg", // Make sure these images exist in your public folder
+    brand: "New Collection",
+    title: "Elegance for Every Moment",
+    link: "/collections/new",
   },
   {
-    image: "/images/hero/hero2.svg",
-    title: "Instagram Ready",
-    subtitle: "Picture perfect pieces for the perfect feed",
+    image: "/slider/slider1.jpg",
+    brand: "Trending Now",
+    title: "Modern Jewelry for the Bold",
+    link: "/collections/trending",
   },
   {
-    image: "/images/hero/hero3.svg",
-    title: "Affordable Luxury",
-    subtitle: "Look expensive without breaking the bank",
+    image: "/slider/slider1.jpg",
+    brand: "Special Offer",
+    title: "Timeless Pieces at Special Prices",
+    link: "/collections/special",
   },
 ];
 
 export default function HeroSlider() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   return (
-    <div className="relative h-screen">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-black">
-            <h1 className="text-5xl md:text-7xl font-serif mb-4 ">
-              {slide.title}
-            </h1>
-            <p className="text-xl md:text-2xl">{slide.subtitle}</p>
+    <div className="px-4 lg:px-8 py-10">
+      <div className="relative">
+        <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
+          <div className="flex">
+            {slides.map((slide, index) => (
+              <div key={index} className="flex-[0_0_100%] min-w-0">
+                <div className="relative h-[30rem] md:h-[calc(100vh-106px)]">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute bottom-0 left-0 w-2/3 md:max-w-lg p-5 md:p-10">
+                    <span className="block text-white text-sm md:text-base">
+                      {slide.brand}
+                    </span>
+                    <span className="block text-white text-xl md:text-3xl font-medium mt-2">
+                      {slide.title}
+                    </span>
+                    <div className="mt-5">
+                      <Link
+                        href={slide.link}
+                        className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-white border border-transparent text-black hover:bg-gray-100 transition-colors"
+                      >
+                        Shop Now
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
 
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-      >
-        <ChevronLeft className="w-6 h-6 text-white" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-      >
-        <ChevronRight className="w-6 h-6 text-white" />
-      </button>
+        {/* Navigation Buttons */}
+        <button
+          onClick={scrollPrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors"
+        >
+          <ChevronLeft className="w-6 h-6 text-white" />
+        </button>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              index === currentSlide ? "bg-white w-8" : "bg-white/50"
-            }`}
-          />
-        ))}
+        <button
+          onClick={scrollNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors"
+        >
+          <ChevronRight className="w-6 h-6 text-white" />
+        </button>
       </div>
     </div>
   );
