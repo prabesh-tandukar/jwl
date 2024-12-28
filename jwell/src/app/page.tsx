@@ -1,7 +1,7 @@
 // src/app/page.tsx
 import { createClient } from "@supabase/supabase-js";
 import HeroSlider from "@/components/home/HeroSlider";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
+import FeaturedProductsSlider from "@/components/home/FeaturedProductsSlider";
 
 import CategoryShowcase from "@/components/home/CategoryShowcase";
 
@@ -18,8 +18,7 @@ export default async function Home() {
   const { data: products } = await supabase
     .from("products")
     .select("*")
-    .order("created_at", { ascending: false })
-    .limit(8);
+    .limit(15);
 
   return (
     <main className="min-h-screen">
@@ -27,12 +26,14 @@ export default async function Home() {
       <HeroSlider />
 
       {/* Featured Products */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 text-blue-800">
+          {/* <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 text-blue-800">
             Featured Jwells
-          </h2>
-          <FeaturedProducts products={products || []} />
+          </h2> */}
+          <div className="mt-8">
+            <FeaturedProductsSlider products={products || []} />
+          </div>
         </div>
       </section>
 
