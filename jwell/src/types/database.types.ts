@@ -7,8 +7,8 @@ export interface Product {
   description: string;
   price: number;
   image_url: string;
-  category_id: string;
-  collection_id: string | null;
+  category: string;
+  collection: string;
   stock: number;
   is_featured: boolean;
   created_at: string;
