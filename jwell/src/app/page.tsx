@@ -15,10 +15,12 @@ export default async function Home() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
+  // Fetch only featured products
   const { data: products } = await supabase
     .from("products")
     .select("*")
-    .limit(15);
+    .eq("is_featured", true)
+    .order("created_at", { ascending: false });
 
   return (
     <main className="min-h-screen">

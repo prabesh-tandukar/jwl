@@ -28,7 +28,7 @@ export default function FeaturedProductsSlider({
         >
           <div className="flex">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 min-w-full">
-              {products.slice(0, 10).map((product) => (
+              {products.map((product) => (
                 <div key={product.id} className="w-full">
                   <ProductCard product={product} />
                 </div>
@@ -38,25 +38,25 @@ export default function FeaturedProductsSlider({
         </div>
 
         {/* Dots Navigation */}
-        <div className="flex justify-center space-x-2 mt-8">
-          {Array.from({ length: Math.ceil(10 / productsPerGroup) }).map(
-            (_, index) => (
+        {numberOfGroups > 1 && (
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: numberOfGroups }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentGroup(index)}
                 className={`
-                w-2 h-2 rounded-full transition-all duration-300
-                ${
-                  currentGroup === index
-                    ? "bg-gray-600 w-6"
-                    : "bg-gray-300 hover:bg-gray-400"
-                }
-              `}
+                  w-2 h-2 rounded-full transition-all duration-300
+                  ${
+                    currentGroup === index
+                      ? "bg-blue-600 w-6"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }
+                `}
                 aria-label={`Product group ${index + 1}`}
               />
-            )
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
