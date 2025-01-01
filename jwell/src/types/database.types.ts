@@ -4,15 +4,15 @@
 export interface Product {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   price: number;
-  image_url: string;
-  category: string;
-  collection: string;
+  image_url: string | null;
+  category: string | null;
+  collection?: string | null;
   stock: number;
-  is_featured: boolean;
-  created_at: string;
-  updated_at: string;
+  is_featured?: boolean | null;
+  created_at: string | null;
+  updated_at: string | null;
 }
 
 // Category interface
