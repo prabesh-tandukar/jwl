@@ -67,14 +67,14 @@ export default function ProductDetails({
         <div className="flex flex-col">
           {/* Product Title & Rating */}
           <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
-          <div className="mt-2 flex items-center gap-2">
+          {/* <div className="mt-2 flex items-center gap-2">
             <div className="flex text-yellow-400">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
             <span className="text-sm text-gray-500">(125 reviews)</span>
-          </div>
+          </div> */}
 
           {/* Price */}
           <div className="mt-4 flex items-baseline gap-2">
@@ -149,15 +149,15 @@ export default function ProductDetails({
             <div className="flex items-center gap-3">
               <Truck className="w-5 h-5 text-gray-400" />
               <span className="text-sm text-gray-600">
-                Free shipping on orders over $100
+                Free shipping when you follow us on Instagram
               </span>
             </div>
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               <RefreshCw className="w-5 h-5 text-gray-400" />
               <span className="text-sm text-gray-600">
                 30-day return policy
               </span>
-            </div>
+            </div> */}
             <div className="flex items-center gap-3">
               <Mail className="w-5 h-5 text-gray-400" />
               <span className="text-sm text-gray-600">
