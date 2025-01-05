@@ -1,9 +1,10 @@
 // src/app/admin/products/add/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { CldUploadWidget } from "next-cloudinary";
+import { useRouter } from "next/router";
 
 export default function AddProduct() {
   const [formData, setFormData] = useState({
@@ -16,8 +17,21 @@ export default function AddProduct() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const router = useRouter();
   const supabase = createClientComponentClient();
+
+  // Check authentication
+  useEffect(() => {
+    const checkAuth = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session) {
+        router.push("/signin"); // Redirect to sign in if not authenticated
+      }
+    };
+    checkAuth();
+  }, [supabase, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
