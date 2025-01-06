@@ -19,7 +19,7 @@ export default function AddProduct() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const supabase = createClientComponentClient();
-
+  //
   // Check authentication
   useEffect(() => {
     const checkAuth = async () => {
